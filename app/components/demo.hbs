@@ -1,1 +1,9 @@
-{{this.data}}
+{{#let (load this.data) as |data|}}
+  {{#if data.isPending}}
+    Pending
+  {{else if data.isRejected}}
+    Rejected: {{data.error}}
+  {{else if data.isResolved}}
+    Resolved: {{data.value}}
+  {{/if}}
+{{/let}}
